@@ -44,10 +44,10 @@ model([
 
     % O dono da mochila Verde está em algum lugar à direita do dono da mochila Branca.
     (
-        (Bag_5==green, (Bag_4==white; Bag_3==white; Bag_2==white; Bag_1==white));
-        (Bag_4==green, (Bag_3==white; Bag_2==white; Bag_1==white));
-        (Bag_3==green, (Bag_2==white; Bag_1==white));
-        (Bag_2==green, Bag_1==white)
+        (Bag_1==white, (Bag_2==green; Bag_3==green; Bag_4==green; Bag_5==green));
+        (Bag_2==white, (Bag_3==green; Bag_4==green; Bag_5==green));
+        (Bag_3==white, (Bag_4==green; Bag_5==green));
+        (Bag_4==white, Bag_5==green)
     ),
 
     % Nome
@@ -67,8 +67,10 @@ model([
     (Name_3==evandro),
 
     % Yuri está um das pontas.
-    % Como Marcel está na primeira posição, ele tem de estar na última.
-    (Name_5==yuri),
+    (
+        (Name_1=yuri);
+        (Name_5=yuri)
+    ),
 
     % O dono da mochila Amarela está em algum lugar à esquerda de Fabricio.
     (
@@ -90,11 +92,11 @@ model([
 
     % Início
 
-    age(Period_1),
-    age(Period_2),
-    age(Period_3),
-    age(Period_4),
-    age(Period_5),
+    period(Period_1),
+    period(Period_2),
+    period(Period_3),
+    period(Period_4),
+    period(Period_5),
 
     alldifferent([Period_1, Period_2, Period_3, Period_4, Period_5]),
 
@@ -200,11 +202,11 @@ model([
 
     % O colecionador da mochila Vermelha gosta de Tênis.
     (
-        (Bag_1==white, Sport_1==tennis);
-        (Bag_2==white, Sport_2==tennis);
-        (Bag_3==white, Sport_3==tennis);
-        (Bag_4==white, Sport_4==tennis);
-        (Bag_5==white, Sport_5==tennis)
+        (Bag_1==red, Sport_1==tennis);
+        (Bag_2==red, Sport_2==tennis);
+        (Bag_3==red, Sport_3==tennis);
+        (Bag_4==red, Sport_4==tennis);
+        (Bag_5==red, Sport_5==tennis)
     ),
 
     % Quem gosta de Vôlei começou a colecionar com 25 anos.
@@ -254,7 +256,7 @@ age(44).
 
 period(12).
 period(15).
-period(22).
+period(20).
 period(22).
 period(25).
 
